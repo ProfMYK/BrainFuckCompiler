@@ -128,7 +128,9 @@ def turnFileIntoProgram(fileLoc):
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    if args[0] == "sim":
+    if not args:
+        assert False, "No arguments provided."
+    elif args[0] == "sim":
         if len(args) == 1:
             assert False, "No file provided."
         simulateProgram(turnFileIntoProgram(args[1]))
@@ -136,3 +138,5 @@ if __name__ == "__main__":
         if len(args) == 1:
             assert False, "No file provided."
         compileProgram(turnFileIntoProgram(args[1]), args[2])
+    else:
+        assert False, "Argument unknown."
